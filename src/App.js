@@ -3,16 +3,17 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import './App.css';
 
+const contextualwebsearchKey = require("./config")["RapidAPI-ContextualWebSearch"];
 const unirest = require("unirest");
 const headers = {
   "x-rapidapi-host" : "contextualwebsearch-websearch-v1.p.rapidapi.com",
-  "x-rapidapi-key" : "28fe4720ccmshb0c89adc5c7246bp1f51c3jsnc4769c5eff4f"
+  "x-rapidapi-key" : contextualwebsearchKey
 }
 
 function App() {
   const [items, setItems] = useState("");
   const [query, setQuery] = useState("");
-  const [aspectRatio, setAspectRation] = useState([16, 9])
+  const [aspectRatio, setAspectRatio] = useState([16, 9])
   const [resolution, setResolution] = useState({height: 1080, width: 1920});
 
   const aspectOptions = ["16:9", "3:2", "21:9", "32:9", "1:1", "4:3"]
@@ -27,7 +28,7 @@ function App() {
 
   useEffect(() => {
     // Supressing compiler
-    setAspectRation([16, 9]);
+    setAspectRatio([16, 9]);
     setResolution({height: 1080, width: 1920});
   }, [])
   console.log(resolution);
