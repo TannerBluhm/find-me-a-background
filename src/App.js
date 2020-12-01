@@ -13,7 +13,7 @@ function App() {
   const [items, setItems] = useState("");
   const [query, setQuery] = useState("");
   const [aspectRatio, setAspectRation] = useState([16, 9])
-  const [resolution, setResolution] = useState({height: 1920, width: 1080});
+  const [resolution, setResolution] = useState({height: 1080, width: 1920});
 
   const aspectOptions = ["16:9", "3:2", "21:9", "32:9", "1:1", "4:3"]
   const resOptions = { //TODO: Finish filling in these options
@@ -24,6 +24,13 @@ function App() {
     "1:1" : [],
     "4:3" : []
   }
+
+  useEffect(() => {
+    // Supressing compiler
+    setAspectRation([16, 9]);
+    setResolution({height: 1080, width: 1920});
+  }, [])
+  console.log(resolution);
   // const Http = new XMLHttpRequest();
   // const url = "https://www.googleapis.com/customsearch/v1?key=AIzaSyCekKeE-iFiABaDXJ5XFKGPRYKa-Vdksu8&cx=9d42989a5ae10e287&q=cat&safe=active";
   // Http.open("GET", url);
@@ -66,15 +73,16 @@ function App() {
     })
   }
 
-  const processQuery = (res) => {
-    let validChoices = [];
-    for (let i=0; i<res.length; i++) {
-      if (
-        res[i].height === resolution.height &&
-        res[i].width === resolution.width
-      ) validChoices.push(res[i]);
-    }
-  }
+  // const processQuery = (res) => {
+  //   if (!res) return;
+  //   let validChoices = [];
+  //   for (let i=0; i<res.length; i++) {
+  //     if (
+  //       res[i].height === resolution.height &&
+  //       res[i].width === resolution.width
+  //     ) validChoices.push(res[i]);
+  //   }
+  // }
 
   return (
     <div className="App">
